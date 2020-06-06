@@ -28,7 +28,7 @@ a:hover {
     text-align: center;
     justify-content: center;
     left: 50%;
-    color:#FBBC05 ;
+    color: rgb(61, 60, 60);;
 
 }
 
@@ -77,7 +77,7 @@ a.button{
 .about0 {
   padding: 20px 0;
   text-align: left;
-  color: #FBBC05!important;
+  color: #FBBC05;
   padding-left:15%;
   padding-top:10%;
   font-family: 'Lucida Sans';
@@ -87,14 +87,14 @@ a.button{
 .project0{
   padding: 20px 0;
   text-align: left;
-  color: #FBBC05!important;
+  color: #FBBC05;
   padding-left:15%;
   padding-top:10%;
 
 }
 .about1 {
-    color: #FBBC05!important;
-    margin-bottom: 1.5rem!important;
+    color: #17a2b8;
+    margin-bottom: 1.5rem;
     font-family: 'Lucida Sans';
     box-sizing: border-box;
 
@@ -103,9 +103,9 @@ a.button{
 
 
 .about2{
-    color: #8492a6!important;
+    color: #8492a6;
     font-family: 'Lucida Sans';
-    margin-bottom: 0!important;
+    margin-bottom: 0;
     line-height: 1.6;
     margin-top: 0;
     box-sizing: border-box;
