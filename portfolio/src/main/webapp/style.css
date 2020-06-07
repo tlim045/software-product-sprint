@@ -6,7 +6,6 @@ html {
     font-family: 'Lucida Sans';
     line-height: 1.5;
     font-weight: 600;
-   
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -19,7 +18,9 @@ a:hover {
     color:#FBBC05 ;
   }
 
-
+.body1{
+    padding-top:18%;
+}
 
 .name{
     letter-spacing: 2px;
@@ -29,7 +30,6 @@ a:hover {
     justify-content: center;
     left: 50%;
     color: rgb(61, 60, 60);;
-
 }
 
 .link1{
@@ -45,9 +45,7 @@ a:hover {
     font-size: 25px;
     color:black;
     padding-left: 10px;
- 
 }
-
 
 .buttonCenter {
     display: inline-block;
@@ -81,7 +79,6 @@ a.button{
   padding-left:15%;
   padding-top:10%;
   font-family: 'Lucida Sans';
-  
 }
 
 .project0{
@@ -90,17 +87,14 @@ a.button{
   color: #FBBC05;
   padding-left:15%;
   padding-top:10%;
-
 }
+
 .about1 {
     color: #17a2b8;
     margin-bottom: 1.5rem;
     font-family: 'Lucida Sans';
     box-sizing: border-box;
-
-    
 }
-
 
 .about2{
     color: #8492a6;
@@ -115,7 +109,6 @@ a.button{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     overflow-x: hidden!important;
-    
 }
 
 .buttons{
@@ -125,35 +118,28 @@ a.button{
     margin: auto;
     width: 70%;
     padding-bottom: 25%;
-  
 }
 
 .div1{
-    padding-bottom: 30%;
-    
+    padding-bottom: 30%;   
 }
-
 
 .div2{
     width:500px;
     padding-left:15%;
 }
 
-
-
 .bullet1{
     color: #2eca8b!important;
     display: inline-block;
     text-align: -webkit-match-parent;
- 
 }
+
 .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
 }
-
 
 .margin{
     margin-top: 0.5rem!important;
@@ -163,7 +149,6 @@ a.button{
     width: 25%;
     padding-right: 0px;
     padding-left: 90px;
-
 }
 
 .border{
@@ -173,7 +158,6 @@ a.button{
     padding-top: 30px;
     padding-bottom: 30px;
 }
-
 
 .project1{
     color: #2eca8b;
@@ -187,11 +171,8 @@ a.button{
 
 .project3{
     font-weight: 600;
-   
     margin: 0;
-    
 }
-
 
 .image1{
     display: block;
@@ -199,8 +180,7 @@ a.button{
     position: relative;
     top: -300px;
     width: 30%;
-  }
-
+}
 
 .image2{
     display: block;
@@ -208,10 +188,7 @@ a.button{
     padding-left: 310px;
     position: relative;
     top: 30px;
-
-
-  }
-
+}
 
 .image3{
     display: block;
@@ -219,9 +196,8 @@ a.button{
     position: relative;
     padding-left: 800px;
     top: -80px;
-    width: 15%;
-   
-  }
+    width: 15%;  
+}
 
 .contact1{
   text-align: left;
