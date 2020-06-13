@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
@@ -57,6 +60,12 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
     String text = getParameter(request, "comment-input", "");
     comments.add(text);
     System.out.println(text);
+
+     Entity commentEntity = new Entity("Comment");
+     commentEntity.setProperty("text", text);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
     // Respond with the result.
     response.setContentType("application/json;");
     response.sendRedirect("index.html#contact");
