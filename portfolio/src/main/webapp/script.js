@@ -42,7 +42,7 @@ function getComments() {
 function createCommentElement(comment) {
   const commentElement = document.createElement('li');
   commentElement.className = "addcomment";
-  commentElement.innerText = comment;
+  commentElement.innerText = comment['text'];
   return commentElement;
 }
 
