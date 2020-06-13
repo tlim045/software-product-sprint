@@ -19,12 +19,31 @@
  * allows you to use the return values directly instead of going through
  * Promises.
  */
-async function getData() {
+/*async function getData() {
   const response = await fetch('/data');
   const data = await response.json();
   document.getElementById('myData').innerText = data;
+}*/
 
-
-  
+/**
+ * Fetches comments from the servers and adds them to the DOM.
+ */
+function getComments() {
+    console.log("test2")
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('comments_section');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createCommentElement(comment));
+    })
+  });
 }
+
+/** Creates an <li> element containing comment. */
+function createCommentElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = "addcomment";
+  commentElement.innerText = comment;
+  return commentElement;
+}
+
 

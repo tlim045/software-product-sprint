@@ -204,3 +204,35 @@ a.button{
   padding-left: 340px;
   padding-top: 10px;
 }
+
+.comment0{
+    padding-left:15%;  
+    padding-top:2%;
+}
+
+.comment1{
+    width: 75%;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid #8492a6;
+    color: #8492a6
+}
+
+input[type=submit] {
+    background-color: #FBBC05;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+  }
+
+.addcomment{
+    width: 75%;
+    height: 50px;
+    padding: 10px;
+    padding-left: 15%;
+   /* border: 2px solid #8492a6;
+      color: #8492a6 */
+}

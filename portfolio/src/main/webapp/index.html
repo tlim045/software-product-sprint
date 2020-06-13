@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js">
+    </script>
   </head>
 
 
@@ -13,8 +14,8 @@
     <div class="content">
       <h1 class="name">Tammy Lim</h1>
     
-    <button onclick="getData()">Fetch my data!</button>
-    <div id="myData"></div>
+    <!--<button onclick="getData()">Fetch my data!</button>
+    <div id="myData"></div> -->
  
     <div class="buttons">
       <a href="#about" class="button">About me</a> 
@@ -96,7 +97,7 @@
    
       
     <!-- Contact me -->
-    <div class="div1">
+    <div class="div3">
         <h1 class="about0" id="contact"> Contact me </h1>
         <img class="image2" src="images/github.png" alt="Github icon">
         <img class="image3" src="images/linkedin.png" alt="Linkedin icon">
@@ -105,6 +106,30 @@
             <a href="https://www.linkedin.com/in/tammy-lim-lee-xin-57890a161/" class="link2">LinkedIn</a>
         </div>
     </div>
+
+    <!-- Comments -->
+    <div>
+        <h1 class="about0 id="commentid"> Leave a comment! </h1>
+        
+    </div>
+
+    <div class="comment0">
+        <form action="/data" method="POST">
+            <textarea class="comment1" name="comment-input">Type your comment here...</textarea>
+            <br>
+            <input type="submit" name="submit" class="button">
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="comments_section"></div>
+
+     <script>
+        getComments();
+    </script>
+
   </body>
 </html> 
 
