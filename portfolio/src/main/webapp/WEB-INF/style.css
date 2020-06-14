@@ -2,7 +2,7 @@ html {
     scroll-behavior: smooth;
   }
 
-*{
+* {
     font-family: 'Lucida Sans';
     line-height: 1.5;
     font-weight: 600;
@@ -18,11 +18,11 @@ a:hover {
     color:#FBBC05 ;
   }
 
-.body1{
+.body {
     padding-top:18%;
 }
 
-.name{
+.name {
     letter-spacing: 2px;
     font-size: 64px;
     font-weight: 900;
@@ -32,7 +32,7 @@ a:hover {
     color: rgb(61, 60, 60);;
 }
 
-.link1{
+.link-git {
     font-family: 'Lucida Sans';
     font-size: 25px;
     color:black;
@@ -40,7 +40,7 @@ a:hover {
     padding-right:400px;
 }
 
-.link2{
+.link-linkedin {
     font-family: 'Lucida Sans';
     font-size: 25px;
     color:black;
@@ -52,7 +52,7 @@ a:hover {
     left: 50%;
 }
 
-a.button{
+a.button {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
@@ -72,7 +72,7 @@ a.button{
     margin-left: 30px;
 }
 
-.about0 {
+.title {
   padding: 20px 0;
   text-align: left;
   color: #FBBC05;
@@ -81,22 +81,14 @@ a.button{
   font-family: 'Lucida Sans';
 }
 
-.project0{
-  padding: 20px 0;
-  text-align: left;
-  color: #FBBC05;
-  padding-left:15%;
-  padding-top:10%;
-}
-
-.about1 {
+.about-heading {
     color: #17a2b8;
     margin-bottom: 1.5rem;
     font-family: 'Lucida Sans';
     box-sizing: border-box;
 }
 
-.about2{
+.about-paragraph {
     color: #8492a6;
     font-family: 'Lucida Sans';
     margin-bottom: 0;
@@ -111,7 +103,7 @@ a.button{
     overflow-x: hidden!important;
 }
 
-.buttons{
+.buttons {
    display: flex;
     justify-content: center;
     align-items: center;
@@ -120,16 +112,12 @@ a.button{
     padding-bottom: 25%;
 }
 
-.div1{
-    padding-bottom: 30%;   
-}
-
-.div2{
+.about-section {
     width:500px;
     padding-left:15%;
 }
 
-.bullet1{
+.bullet1 {
     color: #2eca8b!important;
     display: inline-block;
     text-align: -webkit-match-parent;
@@ -141,7 +129,7 @@ a.button{
     align-items: center;
 }
 
-.margin{
+.margin {
     margin-top: 0.5rem!important;
     flex: 0 0 50%;
     max-width: 25%;
@@ -151,7 +139,7 @@ a.button{
     padding-left: 90px;
 }
 
-.border{
+.border {
     border: 2px solid white;
     padding-left: 50px;
     padding-right: 50px;
@@ -159,22 +147,22 @@ a.button{
     padding-bottom: 30px;
 }
 
-.project1{
+.project1 {
     color: #2eca8b;
     margin: 0;
 }
 
-.project2{
+.project2 {
     color: #17a2b8;
     margin:0;
 }
 
-.project3{
+.project3 {
     font-weight: 600;
     margin: 0;
 }
 
-.image1{
+.image-about {
     display: block;
     margin-left: auto;
     position: relative;
@@ -182,7 +170,7 @@ a.button{
     width: 30%;
 }
 
-.image2{
+.image-git {
     display: block;
     margin-left: left;
     padding-left: 310px;
@@ -190,7 +178,7 @@ a.button{
     top: 30px;
 }
 
-.image3{
+.image-linkedin {
     display: block;
     margin-left: left;
     position: relative;
@@ -199,8 +187,40 @@ a.button{
     width: 15%;  
 }
 
-.contact1{
+.contact1 {
   text-align: left;
   padding-left: 340px;
   padding-top: 10px;
+}
+
+.comment-box {
+    padding-left:15%;  
+    padding-top:2%;
+}
+
+.comment-input {
+    width: 75%;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid #8492a6;
+    color: #8492a6
+}
+
+input[type=submit] {
+    background-color: #FBBC05;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+}
+
+.addcomment {
+    width: 75%;
+    height: 50px;
+    padding: 10px;
+    padding-left: 15%;
+   /* border: 2px solid #8492a6;
+      color: #8492a6 */
 }

@@ -13,12 +13,21 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
-
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import java.io.IOException;
+import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.sps.data.Comment;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -26,7 +35,52 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("Hello Tammy");
+     Query query = new Query("Comment");
+     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+     PreparedQuery results = datastore.prepare(query);
+
+    List<Comment> comments = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+        long id = entity.getKey().getId();
+        String text = (String) entity.getProperty("text");
+        System.out.println(text);
+        Comment comment = new Comment(id, text);
+        comments.add(comment);
+    }
+ 
+    Gson gson = new Gson();
+
+    response.setContentType("application/json;");
+    response.getWriter().println(gson.toJson(comments));
   }
+ 
+
+
+public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "comment-input", "");
+ 
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("text", text);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+    // Respond with the result.
+    response.setContentType("application/json;");
+    response.sendRedirect("index.html#contact");
+}
+
+   /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
+
+
 }
