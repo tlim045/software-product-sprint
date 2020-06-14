@@ -31,7 +31,7 @@
 function getComments() {
     console.log("test2")
   fetch('/data').then(response => response.json()).then((comments) => {
-    const commentListElement = document.getElementById('comments_section');
+    const commentListElement = document.getElementById('comments-section');
     comments.forEach((comment) => {
       commentListElement.appendChild(createCommentElement(comment));
     })

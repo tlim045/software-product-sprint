@@ -29,26 +29,24 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.sps.data.Comment;
 
-
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    System.out.println("startdoget");
      Query query = new Query("Comment");
      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
      PreparedQuery results = datastore.prepare(query);
 
-      List<Comment> comments = new ArrayList<>();
-      for (Entity entity : results.asIterable()) {
+    List<Comment> comments = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
         long id = entity.getKey().getId();
         String text = (String) entity.getProperty("text");
         System.out.println(text);
         Comment comment = new Comment(id, text);
         comments.add(comment);
-      }
+    }
  
     Gson gson = new Gson();
 
@@ -62,8 +60,8 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
     // Get the input from the form.
     String text = getParameter(request, "comment-input", "");
  
-     Entity commentEntity = new Entity("Comment");
-     commentEntity.setProperty("text", text);
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("text", text);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
