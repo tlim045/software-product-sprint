@@ -217,10 +217,19 @@ input[type=submit] {
 }
 
 .addcomment {
-    width: 75%;
-    height: 50px;
+    width: 65%;
     padding: 10px;
+    padding-left: 2%;
+    list-style-type: none;
+    border: 1px solid #8492a6;
+    margin: 2%;
+    margin-left: 15%;
+    color: #8492a6;
+    font-family: roboto;
+    word-wrap: break-word;
+}
+
+.comment-header {
+    color: #FBBC05;
     padding-left: 15%;
-   /* border: 2px solid #8492a6;
-      color: #8492a6 */
 }
