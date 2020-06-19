@@ -46,7 +46,7 @@ public class DataServlet extends HttpServlet {
     for (Entity entity : results.asIterable()) {
         long id = entity.getKey().getId();
         String text = (String) entity.getProperty("text");
-        System.out.println(text);
+
         Comment comment = new Comment(id, text);
         comments.add(comment);
     }
@@ -56,21 +56,8 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
   }
- 
-
 
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Get the input from the form.
-    String text = getParameter(request, "comment-input", "");
- 
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("text", text);
-
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
-    // Respond with the result.
-    response.setContentType("application/json;");
-    response.sendRedirect("index.html#contact");
 
     // Sentiment Analysis
     String message = request.getParameter("comment-input");
@@ -79,14 +66,28 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
         Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
-    float score = sentiment.getScore();
+    float sentiment_score = sentiment.getScore();
     languageService.close();
 
-    System.out.println(score);
+     System.out.println(sentiment_score);
     // Output the sentiment score as HTML.
     // A real project would probably store the score alongside the content.
     response.setContentType("text/html;");
-    response.getWriter().println("<p>Sentiment analysis score: " + score + "</p>");
+    response.getWriter().println("<p>Sentiment analysis score: " + sentiment_score + "</p>");
+
+    // Get the input from the form.
+    String text = getParameter(request, "comment-input", "");
+
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("text", text);
+    commentEntity.setProperty("score", sentiment_score);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+    // Respond with the result.
+    response.setContentType("application/json;");
+    response.sendRedirect("index.html#contact");
+
 }
 
    /**
