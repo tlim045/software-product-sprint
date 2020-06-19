@@ -46,8 +46,8 @@ public class DataServlet extends HttpServlet {
     for (Entity entity : results.asIterable()) {
         long id = entity.getKey().getId();
         String text = (String) entity.getProperty("text");
-
-        Comment comment = new Comment(id, text);
+        double score = (double) entity.getProperty("score");
+        Comment comment = new Comment(id, text, score);
         comments.add(comment);
     }
  
@@ -69,21 +69,19 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
     float sentiment_score = sentiment.getScore();
     languageService.close();
 
-     System.out.println(sentiment_score);
     // Output the sentiment score as HTML.
-    // A real project would probably store the score alongside the content.
     response.setContentType("text/html;");
     response.getWriter().println("<p>Sentiment analysis score: " + sentiment_score + "</p>");
 
     // Get the input from the form.
     String text = getParameter(request, "comment-input", "");
-
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("text", text);
     commentEntity.setProperty("score", sentiment_score);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
+
     // Respond with the result.
     response.setContentType("application/json;");
     response.sendRedirect("index.html#contact");
@@ -101,6 +99,5 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
     }
     return value;
   }
-
 
 }
