@@ -28,6 +28,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.sps.data.Comment;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -68,6 +71,22 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
     // Respond with the result.
     response.setContentType("application/json;");
     response.sendRedirect("index.html#contact");
+
+    // Sentiment Analysis
+    String message = request.getParameter("comment-input");
+
+    Document doc =
+        Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
+
+    System.out.println(score);
+    // Output the sentiment score as HTML.
+    // A real project would probably store the score alongside the content.
+    response.setContentType("text/html;");
+    response.getWriter().println("<p>Sentiment analysis score: " + score + "</p>");
 }
 
    /**
