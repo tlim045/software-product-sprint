@@ -12,28 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-
-/**
- * Another way to use fetch is by using the async and await keywords. This
- * allows you to use the return values directly instead of going through
- * Promises.
- */
-/*async function getData() {
-  const response = await fetch('/data');
-  const data = await response.json();
-  document.getElementById('myData').innerText = data;
-}*/
-
 /**
  * Fetches comments from the servers and adds them to the DOM.
  */
 function getComments() {
-    console.log("test2")
-  fetch('/data').then(response => response.json()).then((comments) => {
+    fetch('/data').then(response => response.json()).then((comments) => {
     const commentListElement = document.getElementById('comments-section');
     comments.forEach((comment) => {
       commentListElement.appendChild(createCommentElement(comment));
+      commentListElement.appendChild(createScoreElement(comment));
     })
   });
 }
@@ -46,4 +33,10 @@ function createCommentElement(comment) {
   return commentElement;
 }
 
+function createScoreElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = "addscore";
+  commentElement.innerText = comment['score'];
+  return commentElement;
+}
 

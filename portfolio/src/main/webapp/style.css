@@ -233,3 +233,11 @@ input[type=submit] {
     color: #FBBC05;
     padding-left: 15%;
 }
+
+.addscore{
+    color: #8492a6;
+    list-style-type: none;
+    margin-left: 15%;
+    font-size: small;
+}
+
