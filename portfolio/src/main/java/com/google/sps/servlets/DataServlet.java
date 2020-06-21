@@ -66,18 +66,18 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
         Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
-    float sentiment_score = sentiment.getScore();
+    float sentimentScore = sentiment.getScore();
     languageService.close();
 
     // Output the sentiment score as HTML.
     response.setContentType("text/html;");
-    response.getWriter().println("<p>Sentiment analysis score: " + sentiment_score + "</p>");
+    response.getWriter().println("<p>Sentiment analysis score: " + sentimentScore + "</p>");
 
     // Get the input from the form.
     String text = getParameter(request, "comment-input", "");
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("text", text);
-    commentEntity.setProperty("score", sentiment_score);
+    commentEntity.setProperty("score", sentimentScore);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
